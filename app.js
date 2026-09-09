@@ -121,8 +121,14 @@ app.all("/{*splat}", (req, res, next) => {
 });
 
 // custom error handling
+// custom error handling
+
 app.use((err, req, res, next) => {
+
+    console.log("ERROR:", err);
+
     let { statusCode = 500, message = "something went wrong!" } = err;
+
     res.status(statusCode).render("error.ejs", { message });
-    // res.status(statusCode).send(message);
+
 });
